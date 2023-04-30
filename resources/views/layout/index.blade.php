@@ -45,24 +45,25 @@
       <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div class="navbar-nav font-weight-bold mx-auto py-0">
           <a href="{{ route('index') }}" class="nav-item nav-link {{ Nav::isRoute('index') }}">Beranda</a>
-          <a href="{{ route('tentang kami') }}" class="nav-item nav-link  {{ Nav::isRoute('tentang kami') }}">Tentang Kami</a>
+          <a href="{{ route('tentang kami') }}" class="nav-item nav-link  {{ Nav::isRoute('tentang kami') }}">Tentang
+            Kami</a>
           <a href="{{ route('publikasi') }}" class="nav-item nav-link  {{ Nav::isRoute('publikasi') }}">Publikasi</a>
           <a href="{{ route('berita') }}" class="nav-item nav-link  {{ Nav::isRoute('berita') }}">Berita</a>
           <a href="{{ route('galeri') }}" class="nav-item nav-link  {{ Nav::isRoute('galeri') }}">Galeri</a>
         </div>
         @if (Route::has('login'))
         <div class="top-right links">
-            @auth
-                <a class="btn btn-primary px-4" href="{{ url('/home') }}">Home</a>
-            @else
-                <a class="btn btn-primary px-4" href="{{ route('login') }}">Login</a>
+          @auth
+          <a class="btn btn-primary px-4" href="{{ route('home') }}">Home</a>
+          @else
+          <a class="btn btn-primary px-4" href="{{ route('login') }}">Login</a>
 
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}">Register</a>
-                @endif
-            @endauth
+          @if (Route::has('register'))
+          <a href="{{ route('register') }}">Register</a>
+          @endif
+          @endauth
         </div>
-    @endif
+        @endif
       </div>
     </nav>
   </div>
@@ -86,7 +87,7 @@
           mahasiswa Sekolah Tinggi Islam.
         </p>
         <div class="d-flex justify-content-start mt-4">
-          <a  class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px"
+          <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px"
             href="https://www.facebook.com/profile.php?id=100079654314060"><i class="fab fa-facebook-f"></i></a>
           <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 38px; height: 38px"
             href="https://youtube.com/@hmikomisariatdakwah-ushull5204"><i class="fab fa-youtube"></i></a>
@@ -119,10 +120,11 @@
         </div>
       </div>
       <div class="col-lg-2 col-md-6 mb-5" style="margin-left: 20px;">
-        <h3 class="text-primary mb-4" >Navigasi</h3>
+        <h3 class="text-primary mb-4">Navigasi</h3>
         <div class="d-flex flex-column justify-content-start">
           <a class="text-white mb-2" href="{{ route('index') }}"><i class="fa fa-angle-right mr-2"></i>Beranda</a>
-          <a class="text-white mb-2" href="{{ route('tentang kami') }}"><i class="fa fa-angle-right mr-2"></i>Tentang kami</a>
+          <a class="text-white mb-2" href="{{ route('tentang kami') }}"><i class="fa fa-angle-right mr-2"></i>Tentang
+            kami</a>
           <a class="text-white mb-2" href="{{ route('publikasi') }}"><i class="fa fa-angle-right mr-2"></i>Publikasi</a>
           <a class="text-white mb-2" href="{{ route('berita') }}"><i class="fa fa-angle-right mr-2"></i>Berita</a>
           <a class="text-white mb-2" href="{{ route('galeri') }}"><i class="fa fa-angle-right mr-2"></i>Galeri</a>

@@ -27,9 +27,16 @@ class BeritaController extends Controller
     }
     public function detail($slug)
     {
-        $berita = Berita::where('slug', $slug)->firstOrFail();
+        $berita = Berita::with("kategori")->where('slug', $slug)->firstOrFail();
+        $berita_terkait = Berita::with("kategori")->where('slug', '!=', $slug)->limit(3)->get();
+        $berita_terbaru = Berita::with("kategori")->where('slug', '!=', $slug)->orderBy('tanggal_rilis', 'DESC')->first();
+        // dd($berita_terbaru);
+        $kategori = KategoriBerita::get();
         return view('frontend.berita-detail', [
             'berita' => $berita,
+            'kategori' => $kategori,
+            'berita_terkait' => $berita_terkait,
+            'berita_terbaru' => $berita_terbaru,
         ]);
     }
 }

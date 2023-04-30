@@ -7,7 +7,7 @@
     <div class="col-lg-8">
       <div class="d-flex flex-column text-left mb-3">
         <p class="section-title pr-5">
-          <span class="pr-2">Blog Detail</span>
+          <span class="pr-2">Publikasi Detail</span>
         </p>
         <h1 class="mb-3">{{ $publikasi->judul }}</h1>
         <div class="d-flex">

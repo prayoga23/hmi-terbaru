@@ -23,10 +23,10 @@ use App\KategoriGaleri;
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('admin', 'HomeController@index')->name('home');
 
-Route::get('/profile', 'ProfileController@index')->name('profile');
-Route::put('/profile', 'ProfileController@update')->name('profile.update');
+Route::get('admin/profile', 'ProfileController@index')->name('profile');
+Route::put('admin/profile', 'ProfileController@update')->name('profile.update');
 
 Route::resource('admin/galeri', 'AdminGaleriController', [
     'as' => 'admin'
