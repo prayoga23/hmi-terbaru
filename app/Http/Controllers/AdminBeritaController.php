@@ -18,7 +18,7 @@ class AdminBeritaController extends Controller
 
         $berita = Berita::with('kategori')->get();
 
-        return view("admin.berita", ["berita" => $berita]);
+        return view("portal.berita", ["berita" => $berita]);
     }
 
     /**
@@ -27,7 +27,7 @@ class AdminBeritaController extends Controller
     public function create()
     {
         $kategoriberita = Kategoriberita::get();
-        return view("admin.berita_tambah", [
+        return view("portal.berita_tambah", [
             "kategoriberita" => $kategoriberita
         ]);
     }
@@ -46,7 +46,7 @@ class AdminBeritaController extends Controller
         ]);
         if ($validator->fails()) {
             // dd($validator->errors());
-            return redirect()->route("admin.berita.create")->with('danger', $validator->errors()->first());
+            return redirect()->route("portal.berita.create")->with('danger', $validator->errors()->first());
         }
         $uploadFolder = "foto/berita/";
         $image = $request->gambar;
@@ -62,7 +62,7 @@ class AdminBeritaController extends Controller
         $berita->kategori_berita_id = $request->kategori_berita_id;
         $berita->save();
 
-        return redirect()->route("admin.berita.index")->with('success', 'berita berhasil ditambahkan');
+        return redirect()->route("portal.berita.index")->with('success', 'berita berhasil ditambahkan');
     }
 
     /**
@@ -79,7 +79,7 @@ class AdminBeritaController extends Controller
     public function edit(Berita $berita)
     {
         $kategoriberita = Kategoriberita::get();
-        return view("admin.berita_edit", [
+        return view("portal.berita_edit", [
             "berita" => $berita,
             "kategoriberita" => $kategoriberita
         ]);
@@ -98,7 +98,7 @@ class AdminBeritaController extends Controller
         ]);
         if ($validator->fails()) {
             // dd($validator->errors());
-            return redirect()->route("admin.berita.edit", $berita)->with('danger', $validator->errors()->first());
+            return redirect()->route("portal.berita.edit", $berita)->with('danger', $validator->errors()->first());
         }
         if ($request->has('gambar')) {
             $uploadFolder = "foto/berita/";
@@ -115,7 +115,7 @@ class AdminBeritaController extends Controller
         $berita->kategori_berita_id = $request->kategori_berita_id;
         $berita->save();
 
-        return redirect()->route("admin.berita.index")->with('success', 'berita berhasil diedit');
+        return redirect()->route("portal.berita.index")->with('success', 'berita berhasil diedit');
     }
 
     /**
@@ -124,6 +124,6 @@ class AdminBeritaController extends Controller
     public function destroy(Berita $berita)
     {
         $berita->delete();
-        return redirect()->route("admin.berita.index")->with('success', 'berita berhasil dihapus');
+        return redirect()->route("portal.berita.index")->with('success', 'berita berhasil dihapus');
     }
 }

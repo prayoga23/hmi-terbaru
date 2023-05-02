@@ -23,38 +23,59 @@ use App\KategoriGaleri;
 
 Auth::routes();
 
-Route::get('admin', 'HomeController@index')->name('home');
+/*------------------------------------------
+--------------------------------------------
+All Normal Users Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:user'])->group(function () {
 
-Route::get('admin/profile', 'ProfileController@index')->name('profile');
-Route::put('admin/profile', 'ProfileController@update')->name('profile.update');
+    Route::get('portal', 'HomeController@index')->name('home');
+    Route::get('portal/profile', 'ProfileController@index')->name('profile');
+    Route::put('portal/profile', 'ProfileController@update')->name('profile.update');
+    Route::resource('portal/galeri', 'AdminGaleriController', [
+        'as' => 'portal'
+    ]);
 
-Route::resource('admin/galeri', 'AdminGaleriController', [
-    'as' => 'admin'
-]);
+    Route::resource('portal/berita', 'AdminBeritaController', [
+        'as' => 'portal'
+    ])->parameters([
+        'berita' => 'berita'
+    ]);
+    Route::resource('portal/kategori-publikasi', 'AdminKategoriPublikasiController', [
+        'as' => 'portal'
+    ]);
+    Route::resource('portal/kategori-berita', 'AdminKategoriBeritaController', [
+        'as' => 'portal'
+    ]);
+    Route::resource('portal/publikasi', 'AdminPublikasiController', [
+        'as' => 'portal'
+    ]);
+    Route::resource('portal/kategori-galeri', 'KategoriGaleriController', [
+        'as' => 'portal'
+    ]);
+});
 
-Route::resource('admin/berita', 'AdminBeritaController', [
-    'as' => 'admin'
-])->parameters([
-    'berita' => 'berita'
-]);
-Route::resource('admin/kategori-publikasi', 'AdminKategoriPublikasiController', [
-    'as' => 'admin'
-]);
-Route::resource('admin/kategori-berita', 'AdminKategoriBeritaController', [
-    'as' => 'admin'
-]);
-Route::resource('admin/publikasi', 'AdminPublikasiController', [
-    'as' => 'admin'
-]);
-Route::resource('admin/kategori-galeri', 'KategoriGaleriController', [
-    'as' => 'admin'
-]);
-// Route::resource('tentangkami', 'AdminTentangKamiController', [
-//     'as' => 'admin'
-// ]);
+/*------------------------------------------
+--------------------------------------------
+All Admin Routes List
+--------------------------------------------
+--------------------------------------------*/
+Route::middleware(['auth', 'user-access:admin'])->group(function () {
+
+    Route::get('/admin', 'HomeController@adminHome')->name('admin.home');
+    Route::resource('admin/management', 'AdminUserController', [
+        'as' => 'admin'
+    ]);
+});
+
+
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+
 // Tampilan Home
 Route::get('/', 'IndexController@index')->name('index');
 Route::get('tentangkami', 'TentangkamiController@index')->name('tentang kami');
@@ -64,5 +85,5 @@ Route::get('publikasi/{slug}', 'PublikasiController@detail')->name('publikasi.de
 Route::get('berita', 'BeritaController@index')->name('berita');
 Route::get('berita/{slug}', 'BeritaController@detail')->name('berita.detail');
 Route::get('galeri', 'GaleriController@index')->name('galeri');
-// Route::get('/admin/publikasi/tambah', 'AdminPublikasiController@index');
+// Route::get('/portal/publikasi/tambah', 'AdminPublikasiController@index');
 // Route::get('/publikasi/edit/{id}', 'AdminPublikasiController@edit');

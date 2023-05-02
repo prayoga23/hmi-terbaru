@@ -18,7 +18,7 @@ class AdminGaleriController extends Controller
 
         $galeri = Galeri::with('kategori')->get();
 
-        return view("admin.galeri", ["galeri" => $galeri]);
+        return view("portal.galeri", ["galeri" => $galeri]);
     }
 
     /**
@@ -27,7 +27,7 @@ class AdminGaleriController extends Controller
     public function create()
     {
         $kategorigaleri = Kategorigaleri::get();
-        return view("admin.galeri_tambah", [
+        return view("portal.galeri_tambah", [
             "kategorigaleri" => $kategorigaleri
         ]);
     }
@@ -44,7 +44,7 @@ class AdminGaleriController extends Controller
         ]);
         if ($validator->fails()) {
             // dd($validator->errors());
-            return redirect()->route("admin.galeri.create")->with('danger', $validator->errors()->first());
+            return redirect()->route("portal.galeri.create")->with('danger', $validator->errors()->first());
         }
         $uploadFolder = "foto/galeri/";
         $image = $request->gambar;
@@ -58,7 +58,7 @@ class AdminGaleriController extends Controller
         $galeri->kategori_galeri_id = $request->kategori_galeri_id;
         $galeri->save();
 
-        return redirect()->route("admin.galeri.index")->with('success', 'galeri berhasil ditambahkan');
+        return redirect()->route("portal.galeri.index")->with('success', 'galeri berhasil ditambahkan');
     }
 
     /**
@@ -75,7 +75,7 @@ class AdminGaleriController extends Controller
     public function edit(galeri $galeri)
     {
         $kategorigaleri = Kategorigaleri::get();
-        return view("admin.galeri_edit", [
+        return view("portal.galeri_edit", [
             "galeri" => $galeri,
             "kategorigaleri" => $kategorigaleri
         ]);
@@ -92,7 +92,7 @@ class AdminGaleriController extends Controller
         ]);
         if ($validator->fails()) {
             // dd($validator->errors());
-            return redirect()->route("admin.galeri.edit", $galeri)->with('danger', $validator->errors()->first());
+            return redirect()->route("portal.galeri.edit", $galeri)->with('danger', $validator->errors()->first());
         }
         if ($request->has('gambar')) {
             $uploadFolder = "foto/galeri/";
@@ -107,7 +107,7 @@ class AdminGaleriController extends Controller
         $galeri->kategori_galeri_id = $request->kategori_galeri_id;
         $galeri->save();
 
-        return redirect()->route("admin.galeri.index")->with('success', 'galeri berhasil diedit');
+        return redirect()->route("portal.galeri.index")->with('success', 'galeri berhasil diedit');
     }
 
     /**
@@ -116,6 +116,6 @@ class AdminGaleriController extends Controller
     public function destroy(galeri $galeri)
     {
         $galeri->delete();
-        return redirect()->route("admin.galeri.index")->with('success', 'galeri berhasil dihapus');
+        return redirect()->route("portal.galeri.index")->with('success', 'galeri berhasil dihapus');
     }
 }

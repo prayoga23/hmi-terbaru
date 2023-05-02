@@ -19,7 +19,7 @@ class AdminKategoriBeritaController extends Controller
     public function index()
     {
         $kategoriberita = KategoriBerita::get();
-        return view('admin.kategori-berita', [
+        return view('portal.kategori-berita', [
             'kategoriberita' => $kategoriberita,
         ]);
     }
@@ -31,7 +31,7 @@ class AdminKategoriBeritaController extends Controller
      */
     public function create()
     {
-        return view('admin.kategori-berita_tambah');
+        return view('portal.kategori-berita_tambah');
     }
 
     /**
@@ -47,13 +47,13 @@ class AdminKategoriBeritaController extends Controller
         ]);
         if ($validator->fails()) {
             // dd($validator->errors());
-            return redirect()->route("admin.kategori-berita.create")->with('danger', $validator->errors()->first());
+            return redirect()->route("portal.kategori-berita.create")->with('danger', $validator->errors()->first());
         }
         $kategori = new KategoriBerita();
         $kategori->nama_kategori = $request->nama_kategori;
         $kategori->save();
 
-        return redirect()->route("admin.kategori-berita.index")->with('success', 'Kategori berhasil ditambahkan');
+        return redirect()->route("portal.kategori-berita.index")->with('success', 'Kategori berhasil ditambahkan');
     }
 
     /**
@@ -76,7 +76,7 @@ class AdminKategoriBeritaController extends Controller
     public function edit(KategoriBerita $kategoriberita)
     {
 
-        return view('admin.kategori-berita_edit', [
+        return view('portal.kategori-berita_edit', [
             'kategoriberita' => $kategoriberita,
         ]);
     }
@@ -95,12 +95,12 @@ class AdminKategoriBeritaController extends Controller
         ]);
         if ($validator->fails()) {
             // dd($validator->errors());
-            return redirect()->route("admin.kategori-berita.edit")->with('danger', $validator->errors()->first());
+            return redirect()->route("portal.kategori-berita.edit")->with('danger', $validator->errors()->first());
         }
         $kategoriberita->nama_kategori = $request->nama_kategori;
         $kategoriberita->save();
 
-        return redirect()->route("admin.kategori-berita.index")->with('success', 'Kategori berhasil diedit');
+        return redirect()->route("portal.kategori-berita.index")->with('success', 'Kategori berhasil diedit');
     }
 
     /**
@@ -112,6 +112,6 @@ class AdminKategoriBeritaController extends Controller
     public function destroy(KategoriBerita $kategoriberita)
     {
         $kategoriberita->delete();
-        return redirect()->route("admin.kategori-berita.index")->with('success', 'Kategori berhasil dihapus');
+        return redirect()->route("portal.kategori-berita.index")->with('success', 'Kategori berhasil dihapus');
     }
 }

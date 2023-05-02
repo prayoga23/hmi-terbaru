@@ -18,7 +18,7 @@ class KategoriGaleriController extends Controller
     public function index()
     {
         $kategorigaleri = KategoriGaleri::get();
-        return view('admin.kategori-galeri', [
+        return view('portal.kategori-galeri', [
             'kategorigaleri' => $kategorigaleri,
         ]);
     }
@@ -30,7 +30,7 @@ class KategoriGaleriController extends Controller
      */
     public function create()
     {
-        return view('admin.kategori-galeri_tambah');
+        return view('portal.kategori-galeri_tambah');
     }
 
     /**
@@ -46,13 +46,13 @@ class KategoriGaleriController extends Controller
         ]);
         if ($validator->fails()) {
             // dd($validator->errors());
-            return redirect()->route("admin.kategori-galeri.create")->with('danger', $validator->errors()->first());
+            return redirect()->route("portal.kategori-galeri.create")->with('danger', $validator->errors()->first());
         }
         $kategori = new KategoriGaleri();
         $kategori->nama_kategori = $request->nama_kategori;
         $kategori->save();
 
-        return redirect()->route("admin.kategori-galeri.index")->with('success', 'Kategori berhasil ditambahkan');
+        return redirect()->route("portal.kategori-galeri.index")->with('success', 'Kategori berhasil ditambahkan');
     }
 
     /**
@@ -75,7 +75,7 @@ class KategoriGaleriController extends Controller
     public function edit(KategoriGaleri $kategorigaleri)
     {
 
-        return view('admin.kategori-galeri_edit', [
+        return view('portal.kategori-galeri_edit', [
             'kategorigaleri' => $kategorigaleri,
         ]);
     }
@@ -94,12 +94,12 @@ class KategoriGaleriController extends Controller
         ]);
         if ($validator->fails()) {
             // dd($validator->errors());
-            return redirect()->route("admin.kategori-galeri.edit")->with('danger', $validator->errors()->first());
+            return redirect()->route("portal.kategori-galeri.edit")->with('danger', $validator->errors()->first());
         }
         $kategorigaleri->nama_kategori = $request->nama_kategori;
         $kategorigaleri->save();
 
-        return redirect()->route("admin.kategori-galeri.index")->with('success', 'Kategori berhasil diedit');
+        return redirect()->route("portal.kategori-galeri.index")->with('success', 'Kategori berhasil diedit');
     }
 
     /**
@@ -111,6 +111,6 @@ class KategoriGaleriController extends Controller
     public function destroy(KategoriGaleri $kategorigaleri)
     {
         $kategorigaleri->delete();
-        return redirect()->route("admin.kategori-galeri.index")->with('success', 'Kategori berhasil dihapus');
+        return redirect()->route("portal.kategori-galeri.index")->with('success', 'Kategori berhasil dihapus');
     }
 }

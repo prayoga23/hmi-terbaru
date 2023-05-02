@@ -28,7 +28,7 @@
     <!-- CSS Files -->
     <!-- Styles -->
     <link href="{{ asset('assets/css/argon-dashboard.css?v=2.0.4') }}" rel="stylesheet">
-       <!-- Favicon -->
+    <!-- Favicon -->
     <link href="{{ asset('img/logo.png')}}" rel="icon" type="image/png">
 </head>
 
@@ -45,96 +45,54 @@
         </div>
         <hr class="horizontal dark mt-0">
         <div class="collapse navbar-collapse w-auto h-auto ps" id="sidenav-collapse-main">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link  {{ Nav::isRoute('home') }}" href="{{ route('home') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link  {{ Nav::isRoute('home') }}" href="{{ route('home') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Nav::isRoute('profile') }}" href="{{ route('profile') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Nav::isRoute('about') }} " href="{{ route('about') }}">
+                        <div
+                            class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">About</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link active"
+                        aria-controls="applicationsExamples" role="button" aria-expanded="false">
+                        <div
+                            class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
+                            <i class="ni ni-ui-04 text-info text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Management Data</span>
+                    </a>
+                    <div class="collapse show" id="applicationsExamples">
+                        <ul class="nav ms-4">
+                            <li class="nav-item ">
+                                <a class="nav-link {{ Nav::isRoute('management user') }}" href="{{ route('management user') }}">
+                                    <span class="sidenav-normal"> Management User </span>
+                                </a>
+                            </li>
+
+                        </ul>
                     </div>
-                    <span class="nav-link-text ms-1">Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Nav::isRoute('profile') }}" href="{{ route('profile') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Profile</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ Nav::isRoute('about') }} " href="{{ route('about') }}">
-                    <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">About</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a data-bs-toggle="collapse" href="#applicationsExamples" class="nav-link active"
-                    aria-controls="applicationsExamples" role="button" aria-expanded="false">
-                    <div
-                        class="icon icon-shape icon-sm text-center d-flex align-items-center justify-content-center">
-                        <i class="ni ni-ui-04 text-info text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Management Data</span>
-                </a>
-                <div class="collapse show" id="applicationsExamples">
-                    <ul class="nav ms-4">
-                        {{-- <li class="nav-item ">
-                            <a class="nav-link {{ Nav::isRoute('tentangkami') }}"
-                                href="{{ route('tentangkami') }}">
-                                <span class="sidenav-normal"> Tentang Kami </span>
-                            </a>
-                        </li> --}}
-                        <li class="nav-item ">
-                            <a class="nav-link {{ Nav::isRoute('admin.publikasi.index') }}"
-                                href="{{ route('admin.publikasi.index') }}">
-                                <span class="sidenav-mini-icon"> W </span>
-                                <span class="sidenav-normal"> Publikasi </span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link {{ Nav::isRoute('admin.kategori-publikasi.index') }}"
-                                href="{{ route('admin.kategori-publikasi.index') }}">
-                                <span class="sidenav-mini-icon"> W </span>
-                                <span class="sidenav-normal"> Kategori Publikasi </span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link {{ Nav::isRoute('admin.kategori-berita.index') }}"
-                                href="{{ route('admin.kategori-berita.index') }}">
-                                <span class="sidenav-mini-icon"> W </span>
-                                <span class="sidenav-normal"> Kategori Berita </span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link {{ Nav::isRoute('admin.kategori-galeri.index') }}"
-                                href="{{ route('admin.kategori-galeri.index') }}">
-                                <span class="sidenav-mini-icon"> W </span>
-                                <span class="sidenav-normal"> Kategori Galeri </span>
-                            </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link {{ Nav::isRoute('admin.berita.index') }}"
-                            href="{{ route('admin.berita.index') }}">
-                            <span class="sidenav-mini-icon"> W </span>
-                            <span class="sidenav-normal"> Berita </span>
-                        </a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link {{ Nav::isRoute('admin.galeri.index') }}"
-                                href="{{ route('admin.galeri.index') }}">
-                                <span class="sidenav-mini-icon"> C </span>
-                                <span class="sidenav-normal"> Galeri </span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+                </li>
             </ul>
             <div class="ps__rail-x" style="left: 0px; bottom: 0px;">
                 <div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div>
@@ -182,11 +140,11 @@
                             <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
                                 aria-labelledby="dropdownMenuButton">
                                 <li class="mb-2">
-                                  <a class="dropdown-item" href="{{ url('/') }}">
-                                      <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
-                                      {{ __('Home Website') }}
-                                  </a>
-                              </li>
+                                    <a class="dropdown-item" href="{{ url('/') }}">
+                                        <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+                                        {{ __('Home Website') }}
+                                    </a>
+                                </li>
                                 <li class="mb-2">
                                     <a class="dropdown-item" href="{{ route('profile') }}">
                                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -338,7 +296,8 @@
                 <div class="modal-footer">
                     <button class="btn btn-link" type="button" data-dismiss="modal">{{ __('Cancel') }}</button>
                     <a class="btn btn-danger" href="{{ route('logout') }}"
-                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{
+                        __('Logout') }}</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
@@ -359,7 +318,7 @@
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script>
-      var win = navigator.platform.indexOf('Win') > -1;
+        var win = navigator.platform.indexOf('Win') > -1;
       if (win && document.querySelector('#sidenav-scrollbar')) {
         var options = {
           damping: '0.5'

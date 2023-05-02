@@ -18,7 +18,7 @@ class AdminPublikasiController extends Controller
 
         $publikasi = Publikasi::with('kategori')->get();
 
-        return view("admin.publikasi", ["publikasi" => $publikasi]);
+        return view("portal.publikasi", ["publikasi" => $publikasi]);
     }
 
     /**
@@ -27,7 +27,7 @@ class AdminPublikasiController extends Controller
     public function create()
     {
         $kategoriPublikasi = KategoriPublikasi::get();
-        return view("admin.publikasi_tambah", [
+        return view("portal.publikasi_tambah", [
             "kategoriPublikasi" => $kategoriPublikasi
         ]);
     }
@@ -46,7 +46,7 @@ class AdminPublikasiController extends Controller
         ]);
         if ($validator->fails()) {
             // dd($validator->errors());
-            return redirect()->route("admin.publikasi.create")->with('danger', $validator->errors()->first());
+            return redirect()->route("portal.publikasi.create")->with('danger', $validator->errors()->first());
         }
         $uploadFolder = "foto/publikasi/";
         $image = $request->gambar;
@@ -62,7 +62,7 @@ class AdminPublikasiController extends Controller
         $publikasi->kategori_publikasi_id = $request->kategori_publikasi_id;
         $publikasi->save();
 
-        return redirect()->route("admin.publikasi.index")->with('success', 'Publikasi berhasil ditambahkan');
+        return redirect()->route("portal.publikasi.index")->with('success', 'Publikasi berhasil ditambahkan');
     }
 
     /**
@@ -79,7 +79,7 @@ class AdminPublikasiController extends Controller
     public function edit(Publikasi $publikasi)
     {
         $kategoriPublikasi = KategoriPublikasi::get();
-        return view("admin.publikasi_edit", [
+        return view("portal.publikasi_edit", [
             "publikasi" => $publikasi,
             "kategoriPublikasi" => $kategoriPublikasi
         ]);
@@ -98,7 +98,7 @@ class AdminPublikasiController extends Controller
         ]);
         if ($validator->fails()) {
             // dd($validator->errors());
-            return redirect()->route("admin.publikasi.edit", $publikasi)->with('danger', $validator->errors()->first());
+            return redirect()->route("portal.publikasi.edit", $publikasi)->with('danger', $validator->errors()->first());
         }
         if ($request->has('gambar')) {
             $uploadFolder = "foto/publikasi/";
@@ -115,7 +115,7 @@ class AdminPublikasiController extends Controller
         $publikasi->kategori_publikasi_id = $request->kategori_publikasi_id;
         $publikasi->save();
 
-        return redirect()->route("admin.publikasi.index")->with('success', 'Publikasi berhasil diedit');
+        return redirect()->route("portal.publikasi.index")->with('success', 'Publikasi berhasil diedit');
     }
 
     /**
@@ -124,6 +124,6 @@ class AdminPublikasiController extends Controller
     public function destroy(publikasi $publikasi)
     {
         $publikasi->delete();
-        return redirect()->route("admin.publikasi.index")->with('success', 'Publikasi berhasil dihapus');
+        return redirect()->route("portal.publikasi.index")->with('success', 'Publikasi berhasil dihapus');
     }
 }

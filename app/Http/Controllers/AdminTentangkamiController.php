@@ -8,6 +8,6 @@ class AdminTentangkamiController extends Controller
 {
     public function index()
     {
-        return view('admin.tentangkami');
+        return view('portal.tentangkami');
     }
 }

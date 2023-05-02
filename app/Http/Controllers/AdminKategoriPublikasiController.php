@@ -19,7 +19,7 @@ class AdminKategoriPublikasiController extends Controller
     public function index()
     {
         $kategoriPublikasi = KategoriPublikasi::get();
-        return view('admin.kategori-publikasi', [
+        return view('portal.kategori-publikasi', [
             'kategoriPublikasi' => $kategoriPublikasi,
         ]);
     }
@@ -31,7 +31,7 @@ class AdminKategoriPublikasiController extends Controller
      */
     public function create()
     {
-        return view('admin.kategori-publikasi_tambah');
+        return view('portal.kategori-publikasi_tambah');
     }
 
     /**
@@ -47,13 +47,13 @@ class AdminKategoriPublikasiController extends Controller
         ]);
         if ($validator->fails()) {
             // dd($validator->errors());
-            return redirect()->route("admin.kategori-publikasi.create")->with('danger', $validator->errors()->first());
+            return redirect()->route("portal.kategori-publikasi.create")->with('danger', $validator->errors()->first());
         }
         $kategori = new KategoriPublikasi();
         $kategori->nama_kategori = $request->nama_kategori;
         $kategori->save();
 
-        return redirect()->route("admin.kategori-publikasi.index")->with('success', 'Kategori berhasil ditambahkan');
+        return redirect()->route("portal.kategori-publikasi.index")->with('success', 'Kategori berhasil ditambahkan');
     }
 
     /**
@@ -76,7 +76,7 @@ class AdminKategoriPublikasiController extends Controller
     public function edit(KategoriPublikasi $kategoriPublikasi)
     {
 
-        return view('admin.kategori-publikasi_edit', [
+        return view('portal.kategori-publikasi_edit', [
             'kategoriPublikasi' => $kategoriPublikasi,
         ]);
     }
@@ -95,12 +95,12 @@ class AdminKategoriPublikasiController extends Controller
         ]);
         if ($validator->fails()) {
             // dd($validator->errors());
-            return redirect()->route("admin.kategori-publikasi.edit")->with('danger', $validator->errors()->first());
+            return redirect()->route("portal.kategori-publikasi.edit")->with('danger', $validator->errors()->first());
         }
         $kategoriPublikasi->nama_kategori = $request->nama_kategori;
         $kategoriPublikasi->save();
 
-        return redirect()->route("admin.kategori-publikasi.index")->with('success', 'Kategori berhasil diedit');
+        return redirect()->route("portal.kategori-publikasi.index")->with('success', 'Kategori berhasil diedit');
     }
 
     /**
@@ -112,6 +112,6 @@ class AdminKategoriPublikasiController extends Controller
     public function destroy(KategoriPublikasi $kategoriPublikasi)
     {
         $kategoriPublikasi->delete();
-        return redirect()->route("admin.kategori-publikasi.index")->with('success', 'Kategori berhasil dihapus');
+        return redirect()->route("portal.kategori-publikasi.index")->with('success', 'Kategori berhasil dihapus');
     }
 }
