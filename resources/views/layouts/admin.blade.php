@@ -85,7 +85,7 @@
                     <div class="collapse show" id="applicationsExamples">
                         <ul class="nav ms-4">
                             <li class="nav-item ">
-                                <a class="nav-link {{ Nav::isRoute('management user') }}" href="{{ route('management user') }}">
+                                <a class="nav-link {{ Nav::isRoute('') }}" href="{{ route('admin.management.index') }}">
                                     <span class="sidenav-normal"> Management User </span>
                                 </a>
                             </li>
