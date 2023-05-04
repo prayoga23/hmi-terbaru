@@ -31,10 +31,12 @@ Website Laravel HMI
 
 Recommend to install this preset on a project that you are starting from scratch, otherwise your project's design might break.
 
-## Credits
+## Creditscomposer install
+- php artisan optimize:clear 
+- php artisan key:generate (generate app key)
+- php artisan migrate (migrasi database)
+- php artisan db:seed (Digunakan memasukkan data untuk bisa mengakses login )
 
-Laravel SB Admin 2 uses some open-source third-party libraries/packages, many thanks to the web community.
-
-- Laravel - Open source framework.
-- LaravelEasyNav - Making managing navigation in Laravel easy.
-- SB Admin 2 - Thanks to Start Bootstrap.
+## Login
+- Email : admin@gmail.com
+- Password : admin123
